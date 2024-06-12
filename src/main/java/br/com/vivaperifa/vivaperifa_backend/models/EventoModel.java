@@ -1,5 +1,7 @@
 package br.com.vivaperifa.vivaperifa_backend.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -28,6 +30,7 @@ public class EventoModel {
     //comentarios
     private double notaAvaliacao;
     private int quantidadeAvaliacao;
+    private List<ComentarioModel> comentarios;
     
     public EventoModel(){
 
@@ -199,5 +202,17 @@ public class EventoModel {
     public void setQuantidadeAvaliacao(int quantidadeAvaliacao) {
         this.quantidadeAvaliacao = quantidadeAvaliacao;
     }
+
+
+    public List<ComentarioModel> getComentarios() {
+        return comentarios;
+    }
+
+
+    public void setComentarios(List<ComentarioModel> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    
     
 }

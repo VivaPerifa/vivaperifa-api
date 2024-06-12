@@ -2,7 +2,11 @@ package br.com.vivaperifa.vivaperifa_backend.models;
 
 import java.util.List;
 
+import org.springframework.data.annotation.Id;
+
 public class PlanoModel {
+    @Id
+    private String id;
     private String nome;
     private String descricao;
     private String tipoPlano; //gratuito, premium
@@ -12,6 +16,14 @@ public class PlanoModel {
 
     public PlanoModel(){
 
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getNome() {

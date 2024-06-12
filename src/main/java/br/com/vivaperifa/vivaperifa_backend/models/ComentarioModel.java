@@ -13,7 +13,6 @@ public class ComentarioModel {
     private double notaAvaliacao;
     private int quantidadeGostei;
     private ParticipanteModel participante;
-    private EventoModel evento;
 
     public ComentarioModel(){
 
@@ -73,14 +72,6 @@ public class ComentarioModel {
 
     public void setNotaAvaliacao(double notaAvaliacao) {
         this.notaAvaliacao = notaAvaliacao;
-    }
-
-    public EventoModel getEvento() {
-        return evento;
-    }
-
-    public void setEvento(EventoModel evento) {
-        this.evento = evento;
     } 
     
 }

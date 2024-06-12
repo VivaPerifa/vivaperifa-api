@@ -8,6 +8,7 @@ public class CategoriaModel {
     @Id
     private String id;
     private String nomeCategoria;
+    private String descricao;
 
     public CategoriaModel(){
 
@@ -28,4 +29,13 @@ public class CategoriaModel {
     public void setNomeCategoria(String nomeCategoria) {
         this.nomeCategoria = nomeCategoria;
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
 }

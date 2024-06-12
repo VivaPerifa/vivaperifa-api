@@ -1,6 +1,10 @@
 package br.com.vivaperifa.vivaperifa_backend.models;
 
+import org.springframework.data.annotation.Id;
+
 public class Usuario {
+    @Id
+    private String id;
     private String email;
     private String senha;
     private String telefone;
@@ -9,6 +13,14 @@ public class Usuario {
 
     public Usuario(){
 
+    }
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id){
+        this.id = id;
     }
 
     public String getEmail() {

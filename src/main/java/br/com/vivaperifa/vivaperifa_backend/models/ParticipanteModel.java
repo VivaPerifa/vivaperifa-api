@@ -14,6 +14,7 @@ public class ParticipanteModel{
     private EnderecoModel endereco;
     private Usuario usuario;
     private List<CategoriaModel> interesses;
+    private List<ComentarioModel> comentarios;
 
     public ParticipanteModel(){
         super();
@@ -66,5 +67,14 @@ public class ParticipanteModel{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    public List<ComentarioModel> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(List<ComentarioModel> comentarios) {
+        this.comentarios = comentarios;
+    }
+    
     
 }
