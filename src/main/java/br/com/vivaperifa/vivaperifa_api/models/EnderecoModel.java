@@ -1,26 +1,35 @@
-package br.com.vivaperifa.vivaperifa_backend.models;
+package br.com.vivaperifa.vivaperifa_api.models;
 
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name="endereco")
 public class EnderecoModel {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
     private String rua;
     private String bairro;
     private int numero;
     private String complemento;
     private String cep;
+    private String cidade;
+    private String estado;
 
     public EnderecoModel(){
 
     }
 
-    public String getId() {
-        return id;
+    public int getCodigo() {
+        return codigo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getRua() {
@@ -61,6 +70,22 @@ public class EnderecoModel {
 
     public void setCep(String cep) {
         this.cep = cep;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     

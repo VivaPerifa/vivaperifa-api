@@ -1,4 +1,4 @@
-package br.com.vivaperifa.vivaperifa_backend.controllers;
+package br.com.vivaperifa.vivaperifa_api.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.vivaperifa.vivaperifa_backend.models.OrganizadorModel;
-import br.com.vivaperifa.vivaperifa_backend.repositories.OrganizadorRepository;
+import br.com.vivaperifa.vivaperifa_api.models.OrganizadorModel;
+import br.com.vivaperifa.vivaperifa_api.repositories.OrganizadorRepository;
 
 @RestController
 @CrossOrigin(origins = "localhost:3000")
@@ -21,9 +21,9 @@ public class OrganizadorController {
     @Autowired
     OrganizadorRepository repository;
 
-    @GetMapping("/organizador/{id}")
-    public ResponseEntity<OrganizadorModel> carregar(@PathVariable String id){
-        Optional<OrganizadorModel> obj = repository.findById(id);
+    @GetMapping("/organizador/{codigo}")
+    public ResponseEntity<OrganizadorModel> carregar(@PathVariable int codigo){
+        Optional<OrganizadorModel> obj = repository.findById(codigo);
         return ResponseEntity.ok(obj.get());
     }
 

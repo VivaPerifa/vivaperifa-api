@@ -1,8 +1,9 @@
-package br.com.vivaperifa.vivaperifa_backend.controllers;
+package br.com.vivaperifa.vivaperifa_api.controllers;
 
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.vivaperifa.vivaperifa_backend.models.ParticipanteModel;
-import br.com.vivaperifa.vivaperifa_backend.repositories.ParticipanteRepository;
+import br.com.vivaperifa.vivaperifa_api.models.ParticipanteModel;
+import br.com.vivaperifa.vivaperifa_api.repositories.ParticipanteRepository;
 
 @RestController
 @CrossOrigin(origins="localhost:3000")
@@ -22,9 +23,15 @@ public class ParticipanteController {
     @Autowired
     ParticipanteRepository repository;
 
-    @GetMapping("/participante/{id}")
-    public ResponseEntity<ParticipanteModel> carregar(@PathVariable String id){
-        Optional<ParticipanteModel> obj = repository.findById(id);
+    // @GetMapping("/participante/{nomeUsuario}")
+    // public ResponseEntity<ParticipanteModel> carregar(@PathVariable String nomeUsuario){
+    //     ParticipanteModel obj = repository.carregar(nomeUsuario);
+    //     return ResponseEntity.ok(obj);
+    // }
+
+    @GetMapping("/participantes/{codigo}")
+    public ResponseEntity<ParticipanteModel> carregar(@PathVariable int codigo){
+        Optional<ParticipanteModel> obj = repository.findById(codigo);
         return ResponseEntity.ok(obj.get());
     }
 
@@ -40,7 +47,6 @@ public class ParticipanteController {
         String msg = "Registro salvo com sucesso";
         return ResponseEntity.ok(msg);
     }
-
     
 }
 

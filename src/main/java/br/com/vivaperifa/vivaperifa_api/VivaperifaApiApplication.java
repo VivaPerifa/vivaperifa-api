@@ -1,13 +1,13 @@
-package br.com.vivaperifa.vivaperifa_backend;
+package br.com.vivaperifa.vivaperifa_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class VivaperifaBackendApplication {
+public class VivaperifaApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(VivaperifaBackendApplication.class, args);
+		SpringApplication.run(VivaperifaApiApplication.class, args);
 	}
 
 }

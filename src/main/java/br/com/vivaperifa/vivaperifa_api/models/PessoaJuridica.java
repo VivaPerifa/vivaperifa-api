@@ -1,4 +1,4 @@
-package br.com.vivaperifa.vivaperifa_backend.models;
+package br.com.vivaperifa.vivaperifa_api.models;
 
 public class PessoaJuridica extends OrganizadorModel{
     private String nomeFantasia;

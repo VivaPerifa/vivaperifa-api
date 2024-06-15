@@ -1,9 +1,11 @@
-package br.com.vivaperifa.vivaperifa_backend.models;
+package br.com.vivaperifa.vivaperifa_api.models;
+
+import java.util.Date;
 
 public class PessoaFisica extends OrganizadorModel{
     private String nome;
     private String cpf;
-    private Data dataNasc;
+    private Date dataNasc;
 
     public PessoaFisica(){
         super();
@@ -25,11 +27,11 @@ public class PessoaFisica extends OrganizadorModel{
         this.cpf = cpf;
     }
 
-    public Data getDataNasc() {
+    public Date getDataNasc() {
         return dataNasc;
     }
 
-    public void setDataNasc(Data dataNasc) {
+    public void setDataNasc(Date dataNasc) {
         this.dataNasc = dataNasc;
     } 
 }

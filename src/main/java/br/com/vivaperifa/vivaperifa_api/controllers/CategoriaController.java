@@ -1,5 +1,6 @@
-package br.com.vivaperifa.vivaperifa_backend.controllers;
+package br.com.vivaperifa.vivaperifa_api.controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.vivaperifa.vivaperifa_backend.models.CategoriaModel;
-import br.com.vivaperifa.vivaperifa_backend.repositories.CategoriaRepository;
+import br.com.vivaperifa.vivaperifa_api.models.CategoriaModel;
+import br.com.vivaperifa.vivaperifa_api.repositories.CategoriaRepository;
 
 @RestController
 @CrossOrigin(origins="localhost:3000")
@@ -20,9 +21,9 @@ public class CategoriaController {
     @Autowired
     CategoriaRepository repository;
 
-    @GetMapping("/categoria/{id}")
-    public ResponseEntity<CategoriaModel> carregar(@PathVariable String id){
-        Optional<CategoriaModel> obj = repository.findById(id);
+    @GetMapping("/categoria/{codigo}")
+    public ResponseEntity<CategoriaModel> carregar(@PathVariable int codigo){
+        Optional<CategoriaModel> obj = repository.findById(codigo);
         return ResponseEntity.ok(obj.get());
     }
 
@@ -30,6 +31,15 @@ public class CategoriaController {
     public ResponseEntity<String> cadastrar(@RequestBody CategoriaModel obj){
         repository.save(obj);
         String msg = "Registro salvo com sucesso";
+        return ResponseEntity.ok(msg);
+    }
+
+    @PostMapping("/categorias")
+    public ResponseEntity<String> cadastrarLista(@RequestBody List<CategoriaModel> listagem){
+        for(CategoriaModel obj : listagem){
+            repository.save(obj);
+        }
+        String msg = "Lista salva com sucesso";
         return ResponseEntity.ok(msg);
     }
 }

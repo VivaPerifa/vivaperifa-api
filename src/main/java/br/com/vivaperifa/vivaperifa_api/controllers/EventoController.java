@@ -1,4 +1,4 @@
-package br.com.vivaperifa.vivaperifa_backend.controllers;
+package br.com.vivaperifa.vivaperifa_api.controllers;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.vivaperifa.vivaperifa_backend.models.EventoModel;
-import br.com.vivaperifa.vivaperifa_backend.repositories.EventoRepository;
+
+import br.com.vivaperifa.vivaperifa_api.models.EventoModel;
+import br.com.vivaperifa.vivaperifa_api.repositories.EventoRepository;
 
 @RestController
 @CrossOrigin(origins = "localhost:3000")
@@ -22,8 +23,8 @@ public class EventoController {
     EventoRepository repository;
 
     @GetMapping("/evento/{codigo}")
-    public ResponseEntity<EventoModel> carregar(@PathVariable String id){
-        Optional<EventoModel> obj = repository.findById(id);
+    public ResponseEntity<EventoModel> carregar(@PathVariable int codigo){
+        Optional<EventoModel> obj = repository.findById(codigo);
         return ResponseEntity.ok(obj.get());
     }
 
@@ -32,6 +33,18 @@ public class EventoController {
         List<EventoModel> listagem = repository.findAll();
         return ResponseEntity.ok(listagem);
     }
+
+    // @GetMapping("/eventos/recentes")
+    // public ResponseEntity<List<EventoModel>> listarEventoRecente(){
+    //     List<EventoModel> listagem = repository.listarEventoRecente();
+    //     return ResponseEntity.ok(listagem);
+    // }
+
+    // @GetMapping("/eventos/{cidade}")
+    // public ResponseEntity<List<EventoModel>> listarEventoLocal(@PathVariable String cidade){
+    //     List<EventoModel> listagem = repository.listarEventoLocal(cidade);
+    //     return ResponseEntity.ok(listagem);
+    // }   
 
     @PostMapping("/evento")
     public ResponseEntity<String> cadastrar(@RequestBody EventoModel obj){

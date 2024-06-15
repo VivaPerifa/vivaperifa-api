@@ -1,10 +1,10 @@
-package br.com.vivaperifa.vivaperifa_backend;
+package br.com.vivaperifa.vivaperifa_api;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class VivaperifaBackendApplicationTests {
+class VivaperifaApiApplicationTests {
 
 	@Test
 	void contextLoads() {
