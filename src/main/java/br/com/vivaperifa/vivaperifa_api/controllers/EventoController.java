@@ -1,5 +1,6 @@
 package br.com.vivaperifa.vivaperifa_api.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,22 +36,17 @@ public class EventoController {
         return ResponseEntity.ok(listagem);
     }
 
-    // @GetMapping("/eventos/recentes")
-    // public ResponseEntity<List<EventoModel>> listarEventoRecente(){
-    //     List<EventoModel> listagem = repository.listarEventoRecente();
-    //     return ResponseEntity.ok(listagem);
-    // }
-
-    // @GetMapping("/eventos/{cidade}")
-    // public ResponseEntity<List<EventoModel>> listarEventoLocal(@PathVariable String cidade){
-    //     List<EventoModel> listagem = repository.listarEventoLocal(cidade);
-    //     return ResponseEntity.ok(listagem);
-    // }   
-
     @PostMapping("/evento")
     public ResponseEntity<String> cadastrar(@RequestBody EventoModel obj){
         repository.save(obj);
         String msg = "Registro salvo com sucesso";
+        return ResponseEntity.ok(msg);
+    }
+
+    @PutMapping("/evento")
+    public ResponseEntity<String> alterar(@RequestBody EventoModel obj){
+        repository.save(obj);
+        String msg = "Registro alterado com sucesso";
         return ResponseEntity.ok(msg);
     }
 }

@@ -30,11 +30,11 @@ public class ParticipanteModel{
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="codigo_participante", referencedColumnName="codigo", nullable = false)
-    private EnderecoModel endereco;
+    private LocalizacaoModel localizacao;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="codigo_usuario", referencedColumnName="codigo", nullable = false)
-    private Usuario usuario;
+    private UsuarioModel usuario;
 
     @ManyToMany
     @JoinTable(
@@ -72,19 +72,11 @@ public class ParticipanteModel{
         this.dataNascimento = dataNascimento;
     }
 
-    public EnderecoModel getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(EnderecoModel endereco) {
-        this.endereco = endereco;
-    }
-
-    public Usuario getUsuario() {
+    public UsuarioModel getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioModel usuario) {
         this.usuario = usuario;
     }
 
@@ -94,6 +86,14 @@ public class ParticipanteModel{
 
     public void setInteresses(List<CategoriaModel> interesses) {
         this.interesses = interesses;
+    }
+
+    public LocalizacaoModel getLocalizacao() {
+        return localizacao;
+    }
+
+    public void setLocalizacao(LocalizacaoModel localizacao) {
+        this.localizacao = localizacao;
     }   
 
     

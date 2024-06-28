@@ -1,12 +1,33 @@
 package br.com.vivaperifa.vivaperifa_api.models;
 
-public class PessoaJuridica extends OrganizadorModel{
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="pessoa_juridica")
+@PrimaryKeyJoinColumn(name = "codigo_organizador")
+public class PessoaJuridicaModel extends OrganizadorModel{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int codigo;
     private String nomeFantasia;
     private String razaoSocial;
     private String cnpj;
 
-    public PessoaJuridica(){
+    public PessoaJuridicaModel(){
         super();
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
     }
 
     public String getNomeFantasia() {

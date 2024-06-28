@@ -3,19 +3,27 @@ package br.com.vivaperifa.vivaperifa_api.models;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.persistence.criteria.JoinType;
 
 @Entity
 @Table(name="organizador")
-public class OrganizadorModel{
+@Inheritance(strategy = InheritanceType.JOINED)
+public class OrganizadorModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
@@ -26,10 +34,12 @@ public class OrganizadorModel{
     private PlanoModel plano;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo")
-    private Usuario usuario;
+    @JoinColumn(name = "codigo_usuario", referencedColumnName = "codigo", nullable = false)
+    private UsuarioModel usuario;
 
-    @Transient
+    @ElementCollection
+    @CollectionTable(name = "rede_social", joinColumns = @JoinColumn(name = "codigo_organizador"))
+    @Column(name = "rede_social")
     private List<String> redeSocial;
 
     public OrganizadorModel(){
@@ -60,11 +70,11 @@ public class OrganizadorModel{
         this.plano = plano;
     }
 
-    public Usuario getUsuario() {
+    public UsuarioModel getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(UsuarioModel usuario) {
         this.usuario = usuario;
     }
 

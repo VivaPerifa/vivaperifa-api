@@ -27,6 +27,12 @@ public class CategoriaController {
         return ResponseEntity.ok(obj.get());
     }
 
+    @GetMapping("/categorias")
+    public ResponseEntity<List<CategoriaModel>> listar(){
+        List<CategoriaModel> listagem = repository.findAll();
+        return ResponseEntity.ok(listagem);
+    }
+
     @PostMapping("/categoria")
     public ResponseEntity<String> cadastrar(@RequestBody CategoriaModel obj){
         repository.save(obj);

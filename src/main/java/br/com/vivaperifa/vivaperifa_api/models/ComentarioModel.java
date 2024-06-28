@@ -1,6 +1,5 @@
 package br.com.vivaperifa.vivaperifa_api.models;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jakarta.persistence.Entity;

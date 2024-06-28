@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="usuario")
-public class Usuario {
+public class UsuarioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
@@ -19,7 +19,7 @@ public class Usuario {
     private String status; 
     private int reputacaoComunidade;
 
-    public Usuario(){
+    public UsuarioModel(){
 
     }
 

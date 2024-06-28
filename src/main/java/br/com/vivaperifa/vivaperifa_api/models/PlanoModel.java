@@ -2,10 +2,16 @@ package br.com.vivaperifa.vivaperifa_api.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
 
@@ -20,7 +26,9 @@ public class PlanoModel {
     private double valor;
     private String periodo; //mensal ou anual
 
-    @Transient
+    @ElementCollection
+    @CollectionTable(name = "beneficio", joinColumns = @JoinColumn(name = "codigo_plano"))
+    @Column(name = "beneficio")
     private List<String> beneficios;
 
     public PlanoModel(){

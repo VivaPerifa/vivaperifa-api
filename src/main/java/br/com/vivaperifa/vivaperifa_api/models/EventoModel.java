@@ -10,12 +10,12 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="evento")
-public class EventoModel {
+public class EventoModel extends PublicacaoModel{
     //detalhes
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,24 +26,24 @@ public class EventoModel {
     private String faixaEtaria;
     private String localVendaIngresso;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="codigo_endereco", referencedColumnName="codigo", nullable = false)
-    private EnderecoModel endereco;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name="codigo_evento", referencedColumnName="codigo", nullable = false)
-    private List<ProgramacaoModel> programacao;
-
     @ManyToOne
-    @JoinColumn(name="codigo_categoria", referencedColumnName="codigo", nullable = false)
+    @JoinColumn(name = "codigo_categoria", referencedColumnName = "codigo", nullable = false)
     private CategoriaModel categoria;
 
     @ManyToOne
-    @JoinColumn(name="codigo_organizador", referencedColumnName="codigo", nullable = false)
+    @JoinColumn(name = "codigo_organizador", referencedColumnName = "codigo", nullable = false)
     private OrganizadorModel organizador;
 
-    public EventoModel(){
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codigo_evento", referencedColumnName = "codigo", nullable = false)
+    private List<ProgramacaoModel> programacao;
 
+    public EventoModel(){
+        super();
+    }
+
+    public void adicionarItemProgramacao(ProgramacaoModel item){
+        programacao.add(item);
     }
 
     public int getCodigo() {
@@ -94,14 +94,6 @@ public class EventoModel {
         this.localVendaIngresso = localVendaIngresso;
     }
 
-    public EnderecoModel getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(EnderecoModel endereco) {
-        this.endereco = endereco;
-    }
-
     public CategoriaModel getCategoria() {
         return categoria;
     }
@@ -125,7 +117,4 @@ public class EventoModel {
     public void setProgramacao(List<ProgramacaoModel> programacao) {
         this.programacao = programacao;
     }
-
-    
-    
 }

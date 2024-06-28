@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name="endereco")
-public class EnderecoModel {
+public class LocalizacaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
@@ -20,7 +20,7 @@ public class EnderecoModel {
     private String cidade;
     private String estado;
 
-    public EnderecoModel(){
+    public LocalizacaoModel(){
 
     }
 

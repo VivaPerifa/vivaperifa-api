@@ -1,26 +1,27 @@
 package br.com.vivaperifa.vivaperifa_api.models;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name="publicacao")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class PublicacaoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    private Date data;
-    private Date hora;
+    private String data;
+    private String hora;
     private int curtidas;
     private int cliques;
     private int salvos;
@@ -31,10 +32,6 @@ public class PublicacaoModel {
     @OneToMany
     @JoinColumn(name = "codigo_publicacao", referencedColumnName = "codigo")
     private List<ComentarioModel> comentarios;
-
-    @OneToOne
-    @JoinColumn(name = "codigo_evento", referencedColumnName = "codigo")
-    private EventoModel evento;
 
     public PublicacaoModel(){
 
@@ -48,19 +45,19 @@ public class PublicacaoModel {
         this.codigo = codigo;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
-    public Date getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(Date hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
@@ -119,14 +116,4 @@ public class PublicacaoModel {
     public void setComentarios(List<ComentarioModel> comentarios) {
         this.comentarios = comentarios;
     }
-
-    public EventoModel getEvento() {
-        return evento;
-    }
-
-    public void setEvento(EventoModel evento) {
-        this.evento = evento;
-    }
-
-    
 }
